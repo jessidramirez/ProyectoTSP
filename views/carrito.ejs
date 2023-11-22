@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+    <title>Catalogo Virtual</title>
+</head>
+<body>
+    <div id="Menu">
+        <ol>
+            <a href="/"><li>INICIO</li></a>
+            <a href="catalogo"><li>CATALOGO</li></a>
+            <a href="#"><li>CATEGORIAS</li></a>
+            <% if(!login){ %>
+                <a href="login"><li>INICIAR SESIÓN</li></a>
+            <% }else{ %>
+                <a href="#"><li>CARRITO</li></a>
+                <a href="logout"><li>SALIR</li></a>
+            <% } %>
+        </ol>
+    </div>
+    <div id="Contenido">    
+        
+        <table id="TablaCarro">
+            <tr>
+                <th>REFERENCIA</th>
+                <th>IMAGEN</th>
+                <th>NOMBRE</th>
+                <th>CANTIDAD</th>
+                <th>VALOR</th>
+                <th>TOTAL</th>
+            </tr>
+            <% for(var i = 0; i<productos.length ; i++){ %>
+                <% var img = productos[i].imagen.toString('base64')%>
+            <tr class="itemCar">
+                <form action="delete" method="POST">
+                <td><input type="text" width="30" name="id_producto" value="<%= productos[i].id_producto %>" readonly></td>
+                <td><img width="50" src="data:image/png;base64,<%=img%>" alt="PRODUCTO"></td>
+                <td><%= productos[i].nombre %></td>
+                <td><%= productos[i].cantidad%></td>
+                <td>$ <%= productos[i].valor %></td>
+                <td>$ <%= productos[i].total%></td>
+                <td><input type="submit" class="eliminar" value="-"></td>
+                </form>
+            </tr>
+            <% } %>
+        </table>
+        <h2>Total a pagar</h2>
+        <h2>$ <%= pagar %></h2>
+        <td><input type="submit" class="pagar" value="PAGAR"></td>
+    </div>
+    <div id="Lateral">
+        <img src="resources/imagenes/sesionIniciada.png" width="100" alt="ITEM">
+        <h2>Usuario conectado</h2>
+        
+        <h2><strong>Cuenta:<%= id_usuario %></strong></h2>
+        <h2><strong>Usuario <%= name %></strong></h2>
+    </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <% if(typeof alert != "undefined"){%>
+     <script>
+        swal({
+            title:'<%= alertTitle %>',
+            text:'<%= alertMessage %>',
+            icon:'<%= alertIcon %>',
+            ShowConfirmButton:<%= ShowConfirmButton %>,
+            timer:<%= timer %>
+        }).then(()=>{
+            window.location='/<%= ruta %>'
+        })
+     </script>
+     <% } %>
+</body>
+</html>

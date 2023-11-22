@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+    <title>Catalogo Virtual</title>
+</head>
+<body>
+    <div id="Menu">
+        <ol>
+            <a href="/"><li>INICIO</li></a>
+            <a href="catalogo"><li>CATALOGO</li></a>
+            <a href="#"><li>CATEGORIAS</li></a>
+            <a href="login"><li>INICIAR SESIÓN </li></a>
+        </ol>
+    </div>
+    <div id="Contenido">
+        <div class="">
+            <div class="">
+                <img src="resources/imagenes/logo.png" width="200" alt="ITEM">
+            </div>
+            <form action="registro" method="POST" id="formularioReg">
+                <table>	
+                      <tbody><tr>
+                        <td><label for="Usuario">Usuario</label></td>
+                        <td><input class="dato" type="text" name="Usuario" form="formularioReg" required="" placeholder="Esbriba su nombre"></td>
+                      </tr>
+                      <tr>
+                        <td><label for="Correo">Correo</label></td>
+                        <td><input class="dato" type="text" name="Correo" form="formularioReg" required="" placeholder="Esbriba su correo electrónico"></td>
+                      </tr>
+                      <tr>
+                        <td><label for="Contraseña">Contraseña</label></td>
+                        <td><input class="dato" type="password" id="Contraseña" name="Contraseña" form="formularioReg" required=""></td>
+                      </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                        <button type="submit" class="BotonReg">Guardar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <a class="BotonRegistro" href="login">Cancelar</a>
+                        </td>
+                    </tr>
+                      
+                </tbody></table>
+                </form>
+            
+            
+        </div>
+    </div>
+    <div id="Lateral">
+        <img src="resources/imagenes/sesionNoIniciada.png" width="100" alt="ITEM">
+        <h2>Usuario conectado</h2>
+        <h2><strong>Usuario <%= name %></strong></h2>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <% if(typeof alert != "undefined"){%>
+     <script>
+        swal({
+            title:'<%= alertTitle %>',
+            text:'<%= alertMessage %>',
+            icon:'<%= alertIcon %>',
+            ShowConfirmButton:<%= ShowConfirmButton %>,
+            timer:<%= timer %>
+        }).then(()=>{
+            window.location='/<%= ruta %>'
+        })
+     </script>
+     <% } %>
+</body>
+</html>
