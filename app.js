@@ -227,7 +227,7 @@ app.get('/login',(req,res)=>{
 })
 app.get('/registro',(req,res)=>{
     if (req.session.loggedin) {
-        res.render('registro',{
+        res.render('index',{
             login: true,
             name:req.session.name,
             id_usuario:req.session.id_usuario

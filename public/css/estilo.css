@@ -1,4 +1,4 @@
-html{background-color: rgba(93, 42, 91, 0.7);display: flexbox;min-width: 900px;}
+html{background-color: rgba(112, 55, 110, 0.685);display: flexbox;min-width: 900px;}
 a{text-decoration: none;color: black;}
 body>*{
     display: inline-block;
@@ -169,7 +169,7 @@ table{
 
 }
 .descripción{
-    background-color: greenyellow;
+    background-color: rgb(178, 231, 99);
     width: 600px;
     margin: auto;
     padding: 10px;
