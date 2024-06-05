@@ -1,4 +1,4 @@
-html{background-color: rgba(112, 55, 110, 0.685);display: flexbox;min-width: 900px;}
+html{background-color: rgba(144, 151, 255, 0.685);display: flexbox;min-width: 900px;}
 a{text-decoration: none;color: black;}
 body>*{
     display: inline-block;
@@ -16,7 +16,7 @@ body>*{
 
 }
 #Menu>ol>*{
-    background-color:greenyellow;
+    background-color:#e0e0df;
     border-bottom: 2px solid greenyellow;
     border-radius: 10px;
     min-width: 120px;
@@ -35,7 +35,7 @@ body>*{
 }
 
 #Menu>ol>a:hover{
-    background-color:rebeccapurple;
+    background-color:#0c0111;
     color: white;
     border-bottom: 2px solid black;
 }
@@ -96,7 +96,8 @@ form>input{
 }
 .ver,.agregar,.eliminar,.pagar,.BotonFiltro,.BotonBuscar{   
     border-radius: 10px;
-    background-color: greenyellow;
+    background-color: #0c0111;
+    color:white;
     width: 90px;
     height: 30px;
     text-align: center;
@@ -112,7 +113,7 @@ form>input{
 
 .BotonIngresar,.BotonReg{
     border-radius: 10px;
-    background-color: purple;
+    background-color: #0c0111;
     color: white;
     width: 100%;
     padding-top: 5px;
@@ -120,7 +121,7 @@ form>input{
 }
 .BotonIngresar:hover.BotonReg:hover{
     border-radius: 10px;
-    background-color: rgb(179, 31, 179);
+    background-color: #0c0111;
     color: white;
     width: 100%;
     
@@ -130,7 +131,7 @@ form>input{
 }
 .BotonRegistro{
     border-radius: 10px;
-    background-color: purple;
+    background-color: #0c0111;
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -141,7 +142,7 @@ form>input{
 }
 table{
     border-radius: 10px;
-    background-color: rgb(202, 255, 123);
+    background-color: #e0e0df;
     padding: 10px;
     text-align: center;
     margin: 20px;
@@ -151,7 +152,7 @@ table{
 }
 .datos{
     border-radius: 10px;
-    background-color: greenyellow;
+    background-color:#e0e0df;
     width: 400px;
     display: inline-block;
     padding: 10px;
@@ -162,14 +163,14 @@ table{
     box-shadow: 0 0 0 3px powderblue;
     width: 400px;
     margin: auto;
-    background-color: greenyellow;
+    background-color: #e0e0df;
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
 
 }
 .descripción{
-    background-color: rgb(178, 231, 99);
+    background-color: #e0e0df;
     width: 600px;
     margin: auto;
     padding: 10px;
@@ -215,7 +216,8 @@ input{
 
 #busqueda,#filtro{
     color: beige;
-    background-color: blueviolet;
+    background-color:#0c0111;
+    ;
     width: 45%;
     height: 40px;
     padding-top: 10px;
@@ -228,7 +230,7 @@ input{
     padding: 10px;
     margin: 0;
     width: 100%;
-    background-color: blueviolet;
+    background-color: #0c0111;
     text-align: left;
     position: absolute;
     display: none;
