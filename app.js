@@ -228,9 +228,8 @@ app.get('/login',(req,res)=>{
 app.get('/registro',(req,res)=>{
     if (req.session.loggedin) {
         res.render('index',{
-            login: true,
-            name:req.session.name,
-            id_usuario:req.session.id_usuario
+            name: req.session.name,
+            id_usuario: req.session.id_usuario
         });
     } else {
         res.render('registro',{
@@ -282,7 +281,6 @@ app.get('/carrito',(req,res)=>{
                     id_usuario:req.session.id_usuario,
                     productos:results,
                     pagar:n
-
                 });
             } else {
                 res.render('carrito',{
@@ -333,17 +331,21 @@ app.post('/delete',(req,res)=>{
              console.log('DELETE FROM carrito WHERE id_producto='+id_producto+' AND id_usuario='+id_usuario+' LIMIT 1');
 
         } else {
-            connection.query('SELECT productos.*,carrito.cantidad FROM carrito INNER JOIN productos ON carrito.id_producto = productos.id_producto INNER JOIN usuarios ON carrito.id_usuario = usuarios.id_usuario WHERE carrito.id_usuario=? ORDER BY productos.id_producto',req.session.id_usuario, async(error,results)=>{
+            connection.query('SELECT (carrito.cantidad*productos.valor) AS total,productos.*,carrito.cantidad FROM carrito INNER JOIN productos ON carrito.id_producto = productos.id_producto INNER JOIN usuarios ON carrito.id_usuario = usuarios.id_usuario WHERE carrito.id_usuario=? ORDER BY productos.id_producto',req.session.id_usuario, async(error,results)=>{
                 if (error) {
                     
                 } else {
+                    var n=0;
+                    for (i=0;i<results.length;i++){  
+                        n=n+results[i].total;
+                    }
                     if (req.session.loggedin) {
                         res.render('carrito',{
                             login: true,
                             name:req.session.name,
                             id_usuario:req.session.id_usuario,
                             productos:results,
-                            total:0
+                            pagar:n
                         });
                     } else {
                         res.render('carrito',{
@@ -351,7 +353,7 @@ app.post('/delete',(req,res)=>{
                             name:'Debe iniciar sesión',
                             id_usuario:0,
                             productos:results,
-                            total:0
+                            pagar:0
                         });
                     }
                 }
