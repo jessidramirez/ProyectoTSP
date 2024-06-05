@@ -94,7 +94,7 @@ form>input{
     height: 400px;
     border:3px solid black;
 }
-.ver,.agregar,.eliminar,.pagar{   
+.ver,.agregar,.eliminar,.pagar,.BotonFiltro,.BotonBuscar{   
     border-radius: 10px;
     background-color: greenyellow;
     width: 90px;
@@ -205,9 +205,46 @@ table{
 input{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 50px;
+    height: 30px;
     text-align: center;
 }
 #cantidad{
     height:30px;
     margin-top: 5px;
+}
+
+#busqueda,#filtro{
+    color: beige;
+    background-color: blueviolet;
+    width: 45%;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 0 3px powderblue;
+    border-radius: 10px;
+    text-align: center;
+}
+#filtro>form{
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    background-color: blueviolet;
+    text-align: left;
+    position: absolute;
+    display: none;
+}
+#busqueda>form{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+#busqueda{float: right;}
+#filtro{float: left;}
+#filtro>form>*
+{
+    width: auto;
+    height: auto;
+}
+#filtro:hover>form{
+    display: block;
+    height: auto;
 }

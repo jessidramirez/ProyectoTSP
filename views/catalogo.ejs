@@ -20,8 +20,56 @@
             <% } %>
         </ol>
     </div>
-    <div id="Contenido">    
+    <div id="Contenido">
         
+        <div id="filtro">
+            <b>FILTRO AVANZADO</b>
+            <form action="filtrar"  method="POST">
+
+                <h2>CATEGORIAS</h2>
+                <br>
+                <input type="checkbox" id="categoria" name="categoria" value="Pantalon">
+                <label>Pantalon</label>
+                <br>
+                
+                <input type="checkbox" id="categoria" name="categoria" value="Camisa">
+                <label>Camisa</label>
+                <br>
+                
+                <input type="checkbox" id="categoria" name="categoria" value="Chaqueta">
+                <label>Chaqueta</label>
+                <br>
+                
+                <input type="checkbox" id="categoria" name="categoria" value="Zapatos">
+                <label>Zapatos</label>
+
+                <br>
+                <h2>VALOR</h2>
+                <br>
+                <label>Minimo:</label>
+                <input type="range" name="precio" list="markers">
+                <br>
+                <label>Maximo:</label>
+                <input type="range" name="precio" list="markers">
+
+                <datalist id="markers">
+                <option value="0"></option>
+                <option value="10000"></option>
+                <option value="200000"></option>
+                <option value="500000"></option>
+                <option value="1000000"></option>
+                </datalist>
+                <br>
+                <input type="submit" value="Aplicar filtro" class="BotonFiltro">
+                <a href="/catalogo" class="BotonFiltro">Quitar filtro</a>
+            </form>
+        </div>
+        <div id="busqueda">
+            <form action="buscar"  method="POST">
+                <input type="text" id="categoria" name="categoria">
+                <input type="submit" value="Buscar" class="BotonBuscar">
+            </form>
+        </div>
         <% for(var i = 0; i<productos.length ; i++){ %>
             <% var img = productos[i].imagen.toString('base64')%>
             <div class="item">
