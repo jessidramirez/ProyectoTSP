@@ -38,21 +38,40 @@ app.post('/registro', async(req,res)=>{
     const Correo= req.body.Correo;
     const Pass= req.body.Contraseña;
     let paswordHash = await bcryptjs.hash(Pass,8);
-    connection.query('INSERT INTO usuarios SET ?', {Usuario:Usuario, Correo:Correo,Contraseña:paswordHash}, async(error,results)=>{
-        if (error) {
-            console.log(error);
+
+    connection.query('SELECT * FROM usuarios WHERE Usuario=?',[Usuario], async(error,results)=>{
+        if (results.length==0) {
+            connection.query('INSERT INTO usuarios SET ?', {Usuario:Usuario, Correo:Correo,Contraseña:paswordHash}, async(error,results)=>{
+                if (error) {
+                    console.log(error);
+                } else {
+                   res.render('registro',{
+                        alert:true,
+                        alertTitle:"Registro",
+                        alertMessage:"¡Registro Exitoso!",
+                        alertIcon:'success',
+                        ShowConfirmButton:false,
+                        timer:1500,
+                        ruta:'login'
+                   })
+                }
+            })
         } else {
-           res.render('registro',{
+            res.render('registro',{
                 alert:true,
-                alertTitle:"Registro",
-                alertMessage:"¡Registro Exitoso!",
-                alertIcon:'success',
-                ShowConfirmButton:false,
-                timer:1500,
-                ruta:'login'
+                alertTitle:"Error",
+                alertMessage:"¡El usuario "+Usuario+" ya esta registrado",
+                alertIcon:'error',
+                ShowConfirmButton:true,
+                timer:false,
+                ruta:'registro',
+                login: false,
+                name:req.session.name,
+                id_usuario:req.session.id_usuario
            })
         }
     })
+    
 })
 app.post('/addCarrito', async(req,res)=>{
     const id_producto= req.body.id_producto;

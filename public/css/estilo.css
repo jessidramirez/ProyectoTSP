@@ -1,4 +1,4 @@
-html{background-color: rgba(144, 151, 255, 0.685);display: flexbox;min-width: 900px;}
+html{background-color: rgba(144, 151, 255, 0.685);display: flexbox;min-width: 900px;font-size: 14px;}
 a{text-decoration: none;color: black;}
 body>*{
     display: inline-block;
