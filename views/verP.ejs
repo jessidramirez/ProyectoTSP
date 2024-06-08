@@ -33,6 +33,13 @@
                     <div class="imgItem">
                         <img width="400" src="data:image/png;base64,<%=img%>" alt="PRODUCTO">
                     </div>
+
+                    <p><%= productos.unidades %> Unidades disponibles</p>
+                    
+                    <br><br>
+                    <label>Descripción:</label>
+                    <p><%= productos.detalle %></p>
+                    <br>
                     <label>Cantidad:</label>
                     <input type="number" min="1" name="cantidad" value="1" max="4" id="cantidad">
                     <input type="submit"  form="producto<%= productos.id_producto %>" value="AGREGAR" class="agregar">    
