@@ -23,8 +23,9 @@
     <div id="Contenido">    
         
             <% var img = productos.imagen.toString('base64')%>
+            <h2><%= productos.nombre %></h2>
                 <form action="addCarritoVer" class="itemVer" method="POST" id="producto<%= productos.id_producto %>">
-                    
+    
                     <label>Ref:</label>
                     <input type="text" name="id_producto" form="producto<%= productos.id_producto %>" value="<%= productos.id_producto %>" readonly>
                     <br>
@@ -36,7 +37,8 @@
 
                     <p><%= productos.unidades %> Unidades disponibles</p>
                     
-                    <br><br>
+                    <br>
+                    
                     <label>Descripción:</label>
                     <p><%= productos.detalle %></p>
                     <br>
