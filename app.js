@@ -149,6 +149,66 @@ app.post('/buscar', async(req,res)=>{
 
 })
 
+app.post('/filtrar', async(req,res)=>{
+    const categoria1= req.body.categoria1;
+    const categoria2= req.body.categoria2;
+    const categoria3= req.body.categoria3;
+    const categoria4= req.body.categoria4;
+
+    const ValorMin= req.body.precioMin;
+    const ValorMax= req.body.precioMax;
+
+    const categorias = [categoria1, categoria2, categoria3, categoria4].filter(categoria => categoria !== undefined);
+
+    let query = 'SELECT * FROM productos WHERE ';
+    const values = [];
+
+    if (categorias.length > 0) {
+        const categoriaConditions = categorias.map(() => 'categoria LIKE ?').join(' OR ');
+        query += `(${categoriaConditions})`;
+        values.push(...categorias.map(categoria => `%${categoria}%`));
+    }
+
+    if (ValorMin !== '') {
+        if (categorias.length > 0) query += ' AND ';
+        query += 'valor >= ?';
+        values.push(ValorMin);
+    }
+
+    if (ValorMax !== '') {
+        if (categorias.length > 0 || ValorMin !== undefined) query += ' AND ';
+        query += 'valor <= ?';
+        values.push(ValorMax);
+    }
+
+    
+    console.log(query+" "+ values);
+
+    connection.query(query,values, async(error,results)=>{
+        if (error) {
+            
+        } else {
+            if (req.session.loggedin) {
+                res.render('catalogo',{
+                    login: true,
+                    name:req.session.name,
+                    id_usuario:req.session.id_usuario,
+                    productos:results
+                    
+                });
+            } else {
+                res.render('catalogo',{
+                    login: false,
+                    name:'Debe iniciar sesión',
+                    id_usuario:0,
+                    productos:results
+                });
+            }
+        }
+    })
+
+})
+
 app.post('/addCarritoVer', async(req,res)=>{
     const id_producto= req.body.id_producto;
     const cantidad= req.body.cantidad;
