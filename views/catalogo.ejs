@@ -78,8 +78,8 @@
             <div class="item">
                 
                 <form action="addCarrito"  method="POST">
-                    <label>Ref:</label>
-                    <input type="text" id="referencia" name="id_producto" value="<%= productos[i].id_producto %>" readonly>
+                    <label></label>
+                    <input type="text" id="referencia" name="id_producto" value="<%= productos[i].nombre %>" readonly>
                     <br>
                     <label>Valor:</label>
                     <input type="text" name="valor" value="$<%= productos[i].valor %>" readonly>
@@ -91,6 +91,7 @@
                 </form>
                 <form action="verP" method="POST">
                     <input type="submit" value="VER" class="ver">
+                    <label>Ref:</label>
                     <input type="text" name="id_producto" value="<%= productos[i].id_producto %>" readonly>  
                 </form> 
             </div>
