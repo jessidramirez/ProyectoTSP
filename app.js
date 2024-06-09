@@ -122,6 +122,33 @@ app.post('/addCarrito', async(req,res)=>{
     })}
 })
 
+app.post('/buscar', async(req,res)=>{
+    const campoBuscar= req.body.categoria;
+    connection.query('SELECT * FROM productos WHERE LOCATE(?, nombre)',[campoBuscar], async(error,results)=>{
+        if (error) {
+            
+        } else {
+            if (req.session.loggedin) {
+                res.render('catalogo',{
+                    login: true,
+                    name:req.session.name,
+                    id_usuario:req.session.id_usuario,
+                    productos:results
+                    
+                });
+            } else {
+                res.render('catalogo',{
+                    login: false,
+                    name:'Debe iniciar sesión',
+                    id_usuario:0,
+                    productos:results
+                });
+            }
+        }
+    })
+
+})
+
 app.post('/addCarritoVer', async(req,res)=>{
     const id_producto= req.body.id_producto;
     const cantidad= req.body.cantidad;

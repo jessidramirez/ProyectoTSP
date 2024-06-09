@@ -43,7 +43,7 @@
                     <p><%= productos.detalle %></p>
                     <br>
                     <label>Cantidad:</label>
-                    <input type="number" min="1" name="cantidad" value="1" max="4" id="cantidad">
+                    <input type="number" min="1" name="cantidad" value="1" max="<%= productos.unidades %>" id="cantidad">
                     <input type="submit"  form="producto<%= productos.id_producto %>" value="AGREGAR" class="agregar">    
                 </form>
     </div>
