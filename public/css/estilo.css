@@ -203,7 +203,7 @@ table{
 #TablaCarro{
     width: 100%;
 }
-input{
+input,select{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 50px;
     height: 30px;
@@ -214,12 +214,11 @@ input{
     margin-top: 5px;
 }
 
-#busqueda,#filtro{
+#busqueda,#filtro,.seleccion{
     color: beige;
     background-color:#0c0111;
-    ;
     width: 45%;
-    height: 40px;
+    height: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 0 0 0 3px powderblue;

@@ -11,7 +11,7 @@
         <ol>
             <a href="/"><li>INICIO</li></a>
             <a href="catalogo"><li>CATALOGO</li></a>
-            <a href="categorias"><li>CATEGORIAS</li></a>
+            <a href="#"><li>CATEGORIAS</li></a>
             <% if(!login){ %>
                 <a href="login"><li>INICIAR SESIÓN</li></a>
             <% }else{ %>
@@ -20,32 +20,20 @@
             <% } %>
         </ol>
     </div>
-    <div id="Contenido">    
-        
-            <% var img = productos.imagen.toString('base64')%>
-            <h2><%= productos.nombre %></h2>
-                <form action="addCarritoVer" class="itemVer" method="POST" id="producto<%= productos.id_producto %>">
-    
-                    <label>Ref:</label>
-                    <input type="text" name="id_producto" form="producto<%= productos.id_producto %>" value="<%= productos.id_producto %>" readonly>
-                    <br>
-                    <label>Valor:</label>
-                    <input type="text" name="valor" form="producto<%= productos.id_producto %>" value="$<%= productos.valor %>" readonly>
-                    <div class="imgItem">
-                        <img width="400" src="data:image/png;base64,<%=img%>" alt="PRODUCTO">
-                    </div>
+    <div id="Contenido">
 
-                    <p><%= productos.unidades %> Unidades disponibles</p>
-                    
-                    <br>
-                    
-                    <label>Descripción:</label>
-                    <p><%= productos.detalle %></p>
-                    <br>
-                    <label>Cantidad:</label>
-                    <input type="number" min="1" name="cantidad" value="1" max="<%= productos.unidades %>" id="cantidad">
-                    <input type="submit"  form="producto<%= productos.id_producto %>" value="AGREGAR" class="agregar">    
-                </form>
+        <% 
+        let ValoresCategorias = new Set();
+        for(var i = 0; i<productos.length ; i++){      
+            ValoresCategorias.add(productos[i].categoria);
+        }
+        let categoriasArray = Array.from(ValoresCategorias);
+        for (var i = 0; i < categoriasArray.length; i++) { 
+        %> 
+        <div class="seleccion">
+            <h1><%= categoriasArray[i] %></h1> 
+        </div>
+        <% } %>
     </div>
     <div id="Lateral">
         <% if(!login){ %>

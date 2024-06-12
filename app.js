@@ -370,6 +370,31 @@ app.get('/catalogo',(req,res)=>{
  
 })
 
+app.get('/categorias',(req,res)=>{
+    connection.query('SELECT * FROM productos', async(error,results)=>{
+        if (error) {
+            console.log('Error: '+error);
+        } else {
+            if (req.session.loggedin) {
+                res.render('categorias',{
+                    login: true,
+                    name:req.session.name,
+                    id_usuario:req.session.id_usuario,
+                    productos:results
+                });
+            } else {
+                res.render('categorias',{
+                    login: false,
+                    name:'Debe iniciar sesión',
+                    id_usuario:0,
+                    productos:results
+                });
+            }
+        }
+    })
+ 
+})
+
 app.get('/carrito',(req,res)=>{
     connection.query('SELECT (carrito.cantidad*productos.valor) AS total,productos.*,carrito.cantidad FROM carrito INNER JOIN productos ON carrito.id_producto = productos.id_producto INNER JOIN usuarios ON carrito.id_usuario = usuarios.id_usuario WHERE carrito.id_usuario=? ORDER BY productos.id_producto',req.session.id_usuario, async(error,results)=>{
         if (error) {
