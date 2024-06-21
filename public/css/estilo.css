@@ -214,7 +214,7 @@ input,select{
     margin-top: 5px;
 }
 
-#busqueda,#filtro,.seleccion{
+#busqueda,#filtro{
     color: beige;
     background-color:#0c0111;
     width: 45%;
@@ -224,6 +224,21 @@ input,select{
     box-shadow: 0 0 0 3px powderblue;
     border-radius: 10px;
     text-align: center;
+}
+.seleccion{
+    width: 30%;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 0 3px powderblue;
+    border-radius: 10px;
+    display: inline-block;
+}
+.seleccion>*{
+    width: 100%;
+    height: 50px;
+    color: beige;
+    background-color:#0c0111;
 }
 #filtro>form{
     padding: 10px;
@@ -248,4 +263,44 @@ input,select{
 #filtro:hover>form{
     display: block;
     height: auto;
+}
+.payment-form {
+    margin: auto;
+    background: powderblue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+.payment-form h2 {
+    margin-bottom: 20px;
+}
+.payment-form .form-group {
+    margin-bottom: 15px;
+}
+.payment-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.payment-form .form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.payment-form .form-group input:focus {
+    border-color: #007bff;
+}
+.payment-form .btn-submit {
+    width: 90%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.payment-form .btn-submit:hover {
+    background-color: #0056b3;
 }

@@ -493,6 +493,15 @@ app.post('/delete',(req,res)=>{
     })
 })
 
+app.post('/Pagar',(req,res)=>{
+    const valor= req.body.Valor;
+        res.render('pago',{
+            login: true,
+            name:req.session.name,
+            id_usuario:req.session.id_usuario,
+            valor:valor
+        });
+})
 app.get('/logout',(req,res)=>{
     req.session.destroy(()=>{
         res.redirect('/')

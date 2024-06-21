@@ -39,6 +39,10 @@
                 <input type="checkbox" id="categoria3" name="categoria3" value="Video">
                 <label>Video</label>
                 <br>
+
+                <input type="checkbox" id="categoria3" name="categoria3" value="Informática">
+                <label>Informática</label>
+                <br>
                 
                 <input type="checkbox" id="categoria4" name="categoria4" value="Hogar">
                 <label>Hogar</label>
@@ -79,7 +83,8 @@
                 
                 <form action="addCarrito"  method="POST">
                     <label></label>
-                    <input type="text" id="referencia" name="id_producto" value="<%= productos[i].nombre %>" readonly>
+                    <input style="display: none;" type="text" id="referencia" name="id_producto" value="<%= productos[i].id_producto %>" readonly>
+                    <input type="text" id="referencia" name="nombre" value="<%= productos[i].nombre %>" readonly>
                     <br>
                     <label>Valor:</label>
                     <input type="text" name="valor" value="$<%= productos[i].valor %>" readonly>

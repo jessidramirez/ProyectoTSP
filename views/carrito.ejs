@@ -46,9 +46,11 @@
             </tr>
             <% } %>
         </table>
-        <h2>Total a pagar</h2>
-        <h2>$ <%= pagar %></h2>
-        <td><input type="submit" class="pagar" value="PAGAR"></td>
+        <form action="pagar" method="post">
+            <h2>Total a pagar</h2>
+            <input name="Valor" type="text" value="$ <%= pagar %>"  readonly >
+            <td><input type="submit" class="pagar" value="PAGAR"></td>
+        </form>
     </div>
     <div id="Lateral">
         <img src="resources/imagenes/sesionIniciada.png" width="100" alt="ITEM">

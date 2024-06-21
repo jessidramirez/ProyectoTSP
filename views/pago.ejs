@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+    <title>Catalogo Virtual</title>
+</head>
+<body>
+    <div id="Menu">
+        <ol>
+            <a href="/"><li>INICIO</li></a>
+            <a href="catalogo"><li>CATALOGO</li></a>
+            <a href="categorias"><li>CATEGORIAS</li></a>
+            <% if(!login){ %>
+                <a href="login"><li>INICIAR SESIÓN</li></a>
+            <% }else{ %>
+                <a href="carrito"><li>CARRITO</li></a>
+                <a href="logout"><li>SALIR</li></a>
+            <% } %>
+        </ol>
+    </div>
+
+    <div id="Contenido">
+        <H1>Valor a pagar: <%= valor %></H1>
+        <div class="payment-form">
+            <h2>Formulario de Pago</h2>
+            <form action="/process_payment" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+                <div class="form-group">
+                    <label for="tarjeta">Número de Tarjeta de Crédito</label>
+                    <input type="text" id="tarjeta" name="tarjeta" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiracion">Fecha de Expiración (MM/AA)</label>
+                    <input type="text" id="expiracion" name="expiracion" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <button type="submit" class="btn-submit">Pagar Ahora</button>
+            </form>
+        </div>
+    </div>   
+    <div id="Lateral">
+        <img src="resources/imagenes/sesionIniciada.png" width="100" alt="ITEM">
+        <h2>Usuario conectado</h2>
+        
+        <h2><strong>Cuenta:<%= id_usuario %></strong></h2>
+        <h2><strong>Usuario <%= name %></strong></h2>
+    </div>
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <% if(typeof alert != "undefined"){%>
+         <script>
+            swal({
+                title:'<%= alertTitle %>',
+                text:'<%= alertMessage %>',
+                icon:'<%= alertIcon %>',
+                ShowConfirmButton:<%= ShowConfirmButton %>,
+                timer:<%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+         </script>
+         <% } %>
+</body>
+</html>
