@@ -493,6 +493,36 @@ app.post('/delete',(req,res)=>{
     })
 })
 
+app.post('/process_payment',async(req,res)=>{
+const id_usuario= req.session.id_usuario;
+
+        connection.query('UPDATE productos p JOIN carrito c ON p.id_producto = c.id_producto SET p.unidades = p.unidades - c.cantidad WHERE c.id_usuario = ?;', [id_usuario], (err, results) => {
+            if (err) {
+                console.log(err);
+            }else{
+                connection.query('DELETE FROM carrito WHERE id_usuario = ?;', [id_usuario], (err, results) => {
+                    if (err) {
+                        console.log(err);
+                    }else{
+                        res.render('pago',{
+                            alert:true,
+                            alertTitle:'OK',
+                            alertMessage:'Transacción completada con éxito.',
+                            alertIcon:'success',
+                            ShowConfirmButton:true,
+                            timer:false,
+                            ruta:'',
+                            login: true,
+                            name:req.session.name,
+                            id_usuario:req.session.id_usuario,
+                            valor:0
+                       })
+                    }
+            })
+            }
+        })
+})
+
 app.post('/Pagar',(req,res)=>{
     const valor= req.body.Valor;
         res.render('pago',{
